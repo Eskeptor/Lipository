@@ -1,0 +1,3 @@
+[submodule "Lipository/Libs"]
+	path = Lipository/Libs
+	url = https://github.com/Eskeptor/EskUtil.git
