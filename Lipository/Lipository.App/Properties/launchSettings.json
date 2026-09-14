@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Lipository.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Lipository.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
