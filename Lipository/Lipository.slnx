@@ -5,6 +5,7 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="Libs/EskUtil/CSUtil/Esk.GearForge.CSUtil.csproj" />
+  <Project Path="Libs/EskUtil/SQLiteUtil/Esk.GearForge.SQLiteUtil.csproj" />
   <Project Path="Lipository.App/Lipository.App.csproj">
     <Platform Solution="*|ARM64" Project="ARM64" />
     <Platform Solution="*|x64" Project="x64" />
