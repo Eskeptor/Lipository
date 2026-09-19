@@ -1,11 +1,9 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Shapes;
+﻿// ======================================================================================================
+// File Name        : App.xaml.cs
+// Project          : Lipository.App
+// Last Update      : 2026.09.19 - yc.jeon (Eskeptor)
+// ======================================================================================================
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,8 +14,17 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Shapes;
+
+using Esk.GearForge.SQLiteUtil;
+using Esk.GearForge.SQLiteUtil.Query;
 
 namespace Lipository.App
 {
@@ -36,6 +43,7 @@ namespace Lipository.App
         public App()
         {
             InitializeComponent();
+            CheckDatabase();
         }
 
         /// <summary>
@@ -46,6 +54,62 @@ namespace Lipository.App
         {
             _mainWindow = new MainWindow();
             _mainWindow.Activate();
+        }
+
+        private void CheckDatabase()
+        {
+            if (!Directory.Exists(Globals.Constants.Database.DirPath))
+            {
+                Directory.CreateDirectory(Globals.Constants.Database.DirPath);
+            }
+
+            using (Manager dbManager = new Manager())
+            {
+                ErrorCode errorCode = dbManager.Connect(Globals.Constants.Database.FullPath, true); 
+                if (errorCode != ErrorCode.Success)
+                {
+                    ContentDialog errorDialog = new ContentDialog()
+                    {
+                        Title = "Database Connection Error",
+                        Content = $"Failed to connect to the database. Error code: {errorCode}",
+                        CloseButtonText = "OK",
+                        XamlRoot = App.MainWindow.Content.XamlRoot
+                    };
+                    _ = errorDialog.ShowAsync();
+                    return;
+                }
+                errorCode = dbManager.ExistTable(Globals.Constants.Database.MainTableName, out bool tableExists);
+                if (errorCode != ErrorCode.Success)
+                {
+                    ContentDialog errorDialog = new ContentDialog()
+                    {
+                        Title = "Database Error",
+                        Content = $"Failed to check if the main table exists. Error code: {errorCode}",
+                        CloseButtonText = "OK",
+                        XamlRoot = App.MainWindow.Content.XamlRoot
+                    };
+                    _ = errorDialog.ShowAsync();
+                    return;
+                }
+                if (!tableExists)
+                {
+                    CreateTableQuery query = Globals.DatabaseUtil.MakeCreateTableQuery();
+                    errorCode = dbManager.CreateTable(query);
+                    if (errorCode != ErrorCode.Success)
+                    {
+                        string msg = $"Failed to create the main table. Error code: {errorCode}";
+                        ContentDialog dialog = new ContentDialog()
+                        {
+                            Title = "Database Table Creation Error",
+                            Content = msg,
+                            CloseButtonText = "OK",
+                            XamlRoot = App.MainWindow.Content.XamlRoot
+                        };
+                        _ = dialog.ShowAsync();
+                        return;
+                    }
+                }
+            }
         }
     }
 }

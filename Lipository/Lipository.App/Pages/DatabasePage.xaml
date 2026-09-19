@@ -7,7 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,10 +18,25 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-            <Button Content="Load Data" Margin="5" />
-            <Button Content="Clear Data" Margin="5" />
-        </StackPanel>
-        <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0" />
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                <Button x:Name="btnReload" Content="Reload" Margin="5" Command="{x:Bind ViewModel.ReloadCommand}" />
+                <Button x:Name="btnSave" Content="Save" Margin="5,5,20,5" Command="{x:Bind ViewModel.SaveCommand}" />
+                <Button x:Name="btnAdd" Content="Add" Margin="5" Command="{x:Bind ViewModel.AddCommand}" />
+                <Button x:Name="btnDelete" Content="Delete" Margin="5" Command="{x:Bind ViewModel.DeleteCommand}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                <Button x:Name="btnImport" Content="Import" Margin="5" Command="{x:Bind ViewModel.ImportCommand}" />
+                <Button x:Name="btnExport" Content="Export" Margin="5" Command="{x:Bind ViewModel.ExportCommand}" />
+            </StackPanel>
+        </Grid>
+        <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0"
+                           ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}" />
     </Grid>
 </Page>

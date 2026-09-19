@@ -1,4 +1,10 @@
-﻿using System;
+﻿// ======================================================================================================
+// File Name        : NavigationMapper.cs
+// Project          : Lipository.App
+// Last Update      : 2026.09.16 - yc.jeon (Eskeptor)
+// ======================================================================================================
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
