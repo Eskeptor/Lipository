@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : DatabasePageViewModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.16 - yc.jeon (Eskeptor)
+// Last Update      : 2026.09.21 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -37,6 +37,7 @@ namespace Lipository.App.ViewModel
         private void Reload()
         {
             DatabaseItemModel.Model.ReloadDatabase();
+            OnPropertyChanged(nameof(Items));
         }
 
         [RelayCommand]

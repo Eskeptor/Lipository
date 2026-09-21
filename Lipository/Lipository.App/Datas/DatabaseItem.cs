@@ -1,11 +1,12 @@
 ﻿// ======================================================================================================
 // File Name        : DatabaseItem.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.16 - yc.jeon (Eskeptor)
+// Last Update      : 2026.09.21 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,13 +27,6 @@ namespace Lipository.App.Datas
         }
         private int _id;
 
-        public string ImagePath
-        {
-            get => _imagePath;
-            set => SetProperty(ref _imagePath, value);
-        }
-        private string _imagePath = string.Empty;
-
         public string Title
         {
             get => _title;
@@ -46,6 +40,13 @@ namespace Lipository.App.Datas
             set => SetProperty(ref _subTitle, value);
         }
         private string _subTitle = string.Empty;
+
+        public string ImagePath
+        {
+            get => _imagePath;
+            set => SetProperty(ref _imagePath, value);
+        }
+        private string _imagePath = string.Empty;
 
         public string DataPath
         {

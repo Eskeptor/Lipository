@@ -1,7 +1,7 @@
 // ======================================================================================================
 // File Name        : DatabasePage.xaml.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.19 - yc.jeon (Eskeptor)
+// Last Update      : 2026.09.21 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -20,7 +20,10 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+using CommunityToolkit.WinUI.UI.Controls;
+
 using Lipository.App.ViewModel;
+using Lipository.App.Datas;
 
 namespace Lipository.App.Pages
 {
@@ -31,6 +34,12 @@ namespace Lipository.App.Pages
     {
         public DatabasePageViewModel ViewModel { get; } = new DatabasePageViewModel();
 
+        private static readonly HashSet<string> HiddenColumns = new HashSet<string>()
+        {
+            nameof(DatabaseItem.ReleaseDateString),
+            nameof(DatabaseItem.LastDateString)
+        };
+
         public DatabasePage()
         {
             InitializeComponent();
@@ -39,6 +48,14 @@ namespace Lipository.App.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ViewModel.ReloadCommand.Execute(null);
+        }
+
+        private void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (HiddenColumns.Contains(e.PropertyName))
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
