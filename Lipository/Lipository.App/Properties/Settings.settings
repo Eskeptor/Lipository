@@ -1,0 +1,126 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Lipository.App.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TotalInfoSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">240, 340</Value>
+    </Setting>
+    <Setting Name="ImageInfoSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">220, 165</Value>
+    </Setting>
+    <Setting Name="ImageInfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">9, 9</Value>
+    </Setting>
+    <Setting Name="ImageInfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="TitleInfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TitleInfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">7, 175</Value>
+    </Setting>
+    <Setting Name="TitleInfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SubTitleInfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SubTitleInfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">7, 200</Value>
+    </Setting>
+    <Setting Name="SubTitleVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RateInfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RateInfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">125, 200</Value>
+    </Setting>
+    <Setting Name="RateInfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Etc1InfoTitle" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Etc1InfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Etc1InfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">7, 215</Value>
+    </Setting>
+    <Setting Name="Etc1InfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Etc2InfoTitle" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Etc2InfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Etc2InfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">7, 230</Value>
+    </Setting>
+    <Setting Name="Etc2InfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Etc3InfoTitle" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Etc3InfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Etc3InfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">7, 245</Value>
+    </Setting>
+    <Setting Name="Etc3InfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Etc4InfoTitle" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Etc4InfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Etc4InfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">7, 260</Value>
+    </Setting>
+    <Setting Name="Etc4InfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MemoInfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MemoInfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">7, 275</Value>
+    </Setting>
+    <Setting Name="MemoInfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ReleaseInfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ReleaseInfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">7, 290</Value>
+    </Setting>
+    <Setting Name="ReleaseInfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LastInfoText" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LastInfoPos" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">7, 305</Value>
+    </Setting>
+    <Setting Name="LastInfoVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MediaExtensions" Type="System.String" Scope="User">
+      <Value Profile="(Default)">avi,mp4,wmv,mpg,mkv,mov,ts,tp,flv</Value>
+    </Setting>
+    <Setting Name="ImageExtensions" Type="System.String" Scope="User">
+      <Value Profile="(Default)">jpg,jpeg,png,bmp</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

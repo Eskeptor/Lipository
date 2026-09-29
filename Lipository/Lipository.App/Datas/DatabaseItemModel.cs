@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : DatabaseItemModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.19 - yc.jeon (Eskeptor)
+// Last Update      : 2026.09.29 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -326,6 +326,36 @@ namespace Lipository.App.Datas
                 }
             }
             return true;
+        }
+
+        public int MatchDatabase()
+        {
+            if (Items.Count == 0)
+            {
+                return 0;
+            }
+
+            List<DatabaseItem> notMatchedDatas = new List<DatabaseItem>(_items.Count / 2);
+            foreach (DatabaseItem item in _items)
+            {
+                if (item.DataPath.StartsWithOrdinal("http://") ||
+                    item.DataPath.StartsWithOrdinal("https://") ||
+                    System.IO.File.Exists(item.DataPath))
+                {
+                    continue;
+                }
+
+                notMatchedDatas.Add(item);
+            }
+
+            if (notMatchedDatas.Count > 0)
+            {
+                for (int i = 0; i < notMatchedDatas.Count; ++i)
+                {
+                    _ = Items.Remove(notMatchedDatas[i]);
+                }
+            }
+            return notMatchedDatas.Count;
         }
 
         private int GetNextID()

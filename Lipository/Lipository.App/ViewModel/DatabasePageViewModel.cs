@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : DatabasePageViewModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.21 - yc.jeon (Eskeptor)
+// Last Update      : 2026.09.29 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -43,10 +43,24 @@ namespace Lipository.App.ViewModel
         [RelayCommand]
         private void Save()
         {
-            bool result = DatabaseItemModel.Model.SaveDatabase();
-            if (result)
+            ContentDialog dlg = new ContentDialog()
             {
-                ContentDialog dlg = new ContentDialog()
+                Title = "Save Database",
+                Content = "Are you sure you want to save the database?",
+                PrimaryButtonText = "Yes",
+                CloseButtonText = "No",
+                XamlRoot = App.MainWindow.Content.XamlRoot
+            };
+            ContentDialogResult result = dlg.ShowAsync().GetResults();
+            if (result != ContentDialogResult.Primary)
+            {
+                return;
+            }
+
+            bool isSave = DatabaseItemModel.Model.SaveDatabase();
+            if (isSave)
+            {
+                dlg = new ContentDialog()
                 {
                     Title = "Database Saved",
                     Content = "The database has been saved successfully.",
@@ -97,6 +111,49 @@ namespace Lipository.App.ViewModel
         {
             // TODO [2026.09.16] Implement logic to export data to a file
             await Task.CompletedTask;
+        }
+
+        [RelayCommand(CanExecute = nameof(CanMatchDatabase))]
+        private void MatchDatabase()
+        {
+            ContentDialog dlg = new ContentDialog()
+            {
+                Title = "Match Database",
+                Content = "Are you sure you want to match the database?",
+                PrimaryButtonText = "Yes",
+                CloseButtonText = "No",
+                XamlRoot = App.MainWindow.Content.XamlRoot
+            };
+            ContentDialogResult result = dlg.ShowAsync().GetResults();
+            if (result != ContentDialogResult.Primary)
+            {
+                return;
+            }
+
+            int notMatchedCount = DatabaseItemModel.Model.MatchDatabase();
+            if (notMatchedCount > 0)
+            {
+                OnPropertyChanged(nameof(Items));
+
+                dlg = new ContentDialog()
+                {
+                    Title = "Database Matched",
+                    Content = $@"The database has been matched successfully.
+{notMatchedCount} items were not matched.",
+                    CloseButtonText = "OK",
+                    XamlRoot = App.MainWindow.Content.XamlRoot
+                };
+                _ = dlg.ShowAsync();
+            }
+        }
+
+        private bool CanMatchDatabase()
+        {
+            if (DatabaseItemModel.Model.Items.Count == 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
