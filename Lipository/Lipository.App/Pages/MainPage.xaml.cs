@@ -21,6 +21,8 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+using Lipository.App.Datas;
+
 namespace Lipository.App.Pages
 {
     /// <summary>
@@ -28,6 +30,8 @@ namespace Lipository.App.Pages
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public SettingsDataModel SettingsDataModel { get => SettingsDataModel.Model; }
+
         public MainPage()
         {
             InitializeComponent();

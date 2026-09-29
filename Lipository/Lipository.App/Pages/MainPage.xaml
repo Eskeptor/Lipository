@@ -9,6 +9,6 @@
     mc:Ignorable="d">
 
     <Grid>
-        
+        <!--UniformGridLayout을 사용한 ItemsView 사용하기-->
     </Grid>
 </Page>
