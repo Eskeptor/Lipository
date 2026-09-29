@@ -102,5 +102,114 @@ namespace Lipository.App.Datas
             set => SetProperty(ref _lastDateInfo, value);
         }
         private SettingInfoItem _lastDateInfo = new SettingInfoItem();
+
+        public string MediaExtensions
+        {
+            get => _mediaExtensions;
+            set => SetProperty(ref _mediaExtensions, value);
+        }
+        private string _mediaExtensions = string.Empty;
+
+        public string ImageExtensions
+        {
+            get => _imageExtensions;
+            set => SetProperty(ref _imageExtensions, value);
+        }
+        private string _imageExtensions = string.Empty;
+
+        public void LoadData()
+        {
+            if (Properties.Settings.Default.IsFirstRun)
+            {
+                TitleInfo.Text = "Title: ";
+                SubTitleInfo.Text = "SubTitle: ";
+                RateInfo.Text = "Rate: ";
+                Etc1Info.Text = "Etc1: ";
+                Etc2Info.Text = "Etc2: ";
+                Etc3Info.Text = "Etc3: ";
+                Etc4Info.Text = "Etc4: ";
+                MemoInfo.Text = "Memo: ";
+                ReleaseDateInfo.Text = "Release Date: ";
+                LastDateInfo.Text = "Last Date: ";
+
+                Properties.Settings.Default.TitleInfoText = TitleInfo.Text;
+                Properties.Settings.Default.SubTitleInfoText = SubTitleInfo.Text;
+                Properties.Settings.Default.RateInfoText = RateInfo.Text;
+                Properties.Settings.Default.Etc1InfoText = Etc1Info.Text;
+                Properties.Settings.Default.Etc2InfoText = Etc2Info.Text;
+                Properties.Settings.Default.Etc3InfoText = Etc3Info.Text;
+                Properties.Settings.Default.Etc4InfoText = Etc4Info.Text;
+                Properties.Settings.Default.MemoInfoText = MemoInfo.Text;
+                Properties.Settings.Default.ReleaseInfoText = ReleaseDateInfo.Text;
+                Properties.Settings.Default.LastInfoText = LastDateInfo.Text;
+                Properties.Settings.Default.IsFirstRun = false;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                TitleInfo.Text = Properties.Settings.Default.TitleInfoText;
+                SubTitleInfo.Text = Properties.Settings.Default.SubTitleInfoText;
+                RateInfo.Text = Properties.Settings.Default.RateInfoText;
+                Etc1Info.Text = Properties.Settings.Default.Etc1InfoText;
+                Etc2Info.Text = Properties.Settings.Default.Etc2InfoText;
+                Etc3Info.Text = Properties.Settings.Default.Etc3InfoText;
+                Etc4Info.Text = Properties.Settings.Default.Etc4InfoText;
+                MemoInfo.Text = Properties.Settings.Default.MemoInfoText;
+                ReleaseDateInfo.Text = Properties.Settings.Default.ReleaseInfoText;
+                LastDateInfo.Text = Properties.Settings.Default.LastInfoText;
+            }
+
+            TotalInfo.Width = Properties.Settings.Default.TotalInfoSize.Width;
+            TotalInfo.Height = Properties.Settings.Default.TotalInfoSize.Height;
+
+            ImageInfo.IsVisible = Properties.Settings.Default.ImageInfoVisible;
+            ImageInfo.Width = Properties.Settings.Default.ImageInfoSize.Width;
+            ImageInfo.Height = Properties.Settings.Default.ImageInfoSize.Height;
+            ImageInfo.XPos = Properties.Settings.Default.ImageInfoPos.X;
+            ImageInfo.YPos = Properties.Settings.Default.ImageInfoPos.Y;
+
+            TitleInfo.IsVisible = Properties.Settings.Default.TitleInfoVisible;
+            TitleInfo.XPos = Properties.Settings.Default.TitleInfoPos.X;
+            TitleInfo.YPos = Properties.Settings.Default.TitleInfoPos.Y;
+
+            SubTitleInfo.IsVisible = Properties.Settings.Default.SubTitleInfoVisible;
+            SubTitleInfo.XPos = Properties.Settings.Default.SubTitleInfoPos.X;
+            SubTitleInfo.YPos = Properties.Settings.Default.SubTitleInfoPos.Y;
+
+            RateInfo.IsVisible = Properties.Settings.Default.RateInfoVisible;
+            RateInfo.XPos = Properties.Settings.Default.RateInfoPos.X;
+            RateInfo.YPos = Properties.Settings.Default.RateInfoPos.Y;
+
+            Etc1Info.IsVisible = Properties.Settings.Default.Etc1InfoVisible;
+            Etc1Info.XPos = Properties.Settings.Default.Etc1InfoPos.X;
+            Etc1Info.YPos = Properties.Settings.Default.Etc1InfoPos.Y;
+
+            Etc2Info.IsVisible = Properties.Settings.Default.Etc2InfoVisible;
+            Etc2Info.XPos = Properties.Settings.Default.Etc2InfoPos.X;
+            Etc2Info.YPos = Properties.Settings.Default.Etc2InfoPos.Y;
+
+            Etc3Info.IsVisible = Properties.Settings.Default.Etc3InfoVisible;
+            Etc3Info.XPos = Properties.Settings.Default.Etc3InfoPos.X;
+            Etc3Info.YPos = Properties.Settings.Default.Etc3InfoPos.Y;
+
+            Etc4Info.IsVisible = Properties.Settings.Default.Etc4InfoVisible;
+            Etc4Info.XPos = Properties.Settings.Default.Etc4InfoPos.X;
+            Etc4Info.YPos = Properties.Settings.Default.Etc4InfoPos.Y;
+
+            MemoInfo.IsVisible = Properties.Settings.Default.MemoInfoVisible;
+            MemoInfo.XPos = Properties.Settings.Default.MemoInfoPos.X;
+            MemoInfo.YPos = Properties.Settings.Default.MemoInfoPos.Y;
+
+            ReleaseDateInfo.IsVisible = Properties.Settings.Default.ReleaseInfoVisible;
+            ReleaseDateInfo.XPos = Properties.Settings.Default.ReleaseInfoPos.X;
+            ReleaseDateInfo.YPos = Properties.Settings.Default.ReleaseInfoPos.Y;
+
+            LastDateInfo.IsVisible = Properties.Settings.Default.LastInfoVisible;
+            LastDateInfo.XPos = Properties.Settings.Default.LastInfoPos.X;
+            LastDateInfo.YPos = Properties.Settings.Default.LastInfoPos.Y;
+
+            MediaExtensions = Properties.Settings.Default.MediaExtensions;
+            ImageExtensions = Properties.Settings.Default.ImageExtensions;
+        }
     }
 }

@@ -134,12 +134,12 @@ namespace Lipository.App.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SubTitleVisible {
+        public bool SubTitleInfoVisible {
             get {
-                return ((bool)(this["SubTitleVisible"]));
+                return ((bool)(this["SubTitleInfoVisible"]));
             }
             set {
-                this["SubTitleVisible"] = value;
+                this["SubTitleInfoVisible"] = value;
             }
         }
         
@@ -500,6 +500,18 @@ namespace Lipository.App.Properties {
             }
             set {
                 this["ImageExtensions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsFirstRun {
+            get {
+                return ((bool)(this["IsFirstRun"]));
+            }
+            set {
+                this["IsFirstRun"] = value;
             }
         }
     }

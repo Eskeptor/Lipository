@@ -29,7 +29,7 @@
     <Setting Name="SubTitleInfoPos" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">7, 200</Value>
     </Setting>
-    <Setting Name="SubTitleVisible" Type="System.Boolean" Scope="User">
+    <Setting Name="SubTitleInfoVisible" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="RateInfoText" Type="System.String" Scope="User">
@@ -121,6 +121,9 @@
     </Setting>
     <Setting Name="ImageExtensions" Type="System.String" Scope="User">
       <Value Profile="(Default)">jpg,jpeg,png,bmp</Value>
+    </Setting>
+    <Setting Name="IsFirstRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
