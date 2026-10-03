@@ -92,11 +92,7 @@ namespace Lipository.App.ViewModel
 
         private bool CanDelete()
         {
-            if (_selectedItem == null)
-            {
-                return false;
-            }
-            return true;
+            return SelectedItem != null;
         }
 
         [RelayCommand]

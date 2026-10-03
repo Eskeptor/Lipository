@@ -38,6 +38,8 @@
         </Grid>
         <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0"
                            ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
+                           SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}"
+                           SelectionMode="Single"
                            AutoGeneratingColumn="DataGrid_AutoGeneratingColumn"/>
     </Grid>
 </Page>

@@ -22,6 +22,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
 using Lipository.App.Datas;
+using Lipository.App.ViewModel;
 
 namespace Lipository.App.Pages
 {
@@ -32,9 +33,28 @@ namespace Lipository.App.Pages
     {
         public SettingsDataModel SettingsDataModel { get => SettingsDataModel.Model; }
 
+        public MainPageViewModel ViewModel { get; } = new MainPageViewModel();
+
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void Canvas_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource is not FrameworkElement element)
+            {
+                return;
+            }
+            if (element.DataContext is not DatabaseItem item)
+            {
+                return;
+            }
+            ViewModel.SelectedItem = item;
+            if (ViewModel.RunItemCommand.CanExecute(null))
+            {
+                ViewModel.RunItemCommand.Execute(null);
+            }
         }
     }
 }
