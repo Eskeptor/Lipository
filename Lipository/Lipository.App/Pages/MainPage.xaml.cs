@@ -38,6 +38,7 @@ namespace Lipository.App.Pages
         public MainPage()
         {
             InitializeComponent();
+
         }
 
         private void Canvas_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)

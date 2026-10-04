@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : SettingsDataModel.cs
 // Project          : Lipository.App  
-// Last Update      : 2026.09.29 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.04 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -22,104 +22,206 @@ namespace Lipository.App.Datas
         public SettingInfoItem TotalInfo
         {
             get => _totalInfo;
-            set => SetProperty(ref _totalInfo, value);
+            set
+            {
+                if (SetProperty(ref _totalInfo, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _totalInfo = new SettingInfoItem();
 
         public SettingInfoItem ImageInfo
         {
             get => _imageInfo;
-            set => SetProperty(ref _imageInfo, value);
+            set
+            {
+                if (SetProperty(ref _imageInfo, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _imageInfo = new SettingInfoItem();
 
         public SettingInfoItem TitleInfo
         {
             get => _titleInfo;
-            set => SetProperty(ref _titleInfo, value);
+            set
+            {
+                if (SetProperty(ref _titleInfo, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _titleInfo = new SettingInfoItem();
 
         public SettingInfoItem SubTitleInfo
         {
             get => _subTitleInfo;
-            set => SetProperty(ref _subTitleInfo, value);
+            set
+            {
+                if (SetProperty(ref _subTitleInfo, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _subTitleInfo = new SettingInfoItem();
 
         public SettingInfoItem RateInfo
         {
             get => _rateInfo;
-            set => SetProperty(ref _rateInfo, value);
+            set
+            {
+                if (SetProperty(ref _rateInfo, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _rateInfo = new SettingInfoItem();
 
         public SettingInfoItem Etc1Info
         {
             get => _etc1Info;
-            set => SetProperty(ref _etc1Info, value);
+            set
+            {
+                if (SetProperty(ref _etc1Info, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _etc1Info = new SettingInfoItem();
 
         public SettingInfoItem Etc2Info
         {
             get => _etc2Info;
-            set => SetProperty(ref _etc2Info, value);
+            set
+            {
+                if (SetProperty(ref _etc2Info, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _etc2Info = new SettingInfoItem();
 
         public SettingInfoItem Etc3Info
         {
             get => _etc3Info;
-            set => SetProperty(ref _etc3Info, value);
+            set
+            {
+                if (SetProperty(ref _etc3Info, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _etc3Info = new SettingInfoItem();
 
         public SettingInfoItem Etc4Info
         {
             get => _etc4Info;
-            set => SetProperty(ref _etc4Info, value);
+            set
+            {
+                if (SetProperty(ref _etc4Info, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _etc4Info = new SettingInfoItem();
 
         public SettingInfoItem MemoInfo
         {
             get => _memoInfo;
-            set => SetProperty(ref _memoInfo, value);
+            set
+            {
+                if (SetProperty(ref _memoInfo, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _memoInfo = new SettingInfoItem();
 
         public SettingInfoItem ReleaseDateInfo
         {
             get => _releaseDateInfo;
-            set => SetProperty(ref _releaseDateInfo, value);
+            set
+            {
+                if (SetProperty(ref _releaseDateInfo, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _releaseDateInfo = new SettingInfoItem();
 
         public SettingInfoItem LastDateInfo
         {
             get => _lastDateInfo;
-            set => SetProperty(ref _lastDateInfo, value);
+            set
+            {
+                if (SetProperty(ref _lastDateInfo, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private SettingInfoItem _lastDateInfo = new SettingInfoItem();
 
         public string MediaExtensions
         {
             get => _mediaExtensions;
-            set => SetProperty(ref _mediaExtensions, value);
+            set
+            {
+                if (SetProperty(ref _mediaExtensions, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private string _mediaExtensions = string.Empty;
 
         public string ImageExtensions
         {
             get => _imageExtensions;
-            set => SetProperty(ref _imageExtensions, value);
+            set
+            {
+                if (SetProperty(ref _imageExtensions, value))
+                {
+                    _isChanged = true;
+                }
+            }
         }
         private string _imageExtensions = string.Empty;
 
+        public string DefaultImagePath
+        {
+            get => _defaultImagePath;
+            set
+            {
+                if (SetProperty(ref _defaultImagePath, value))
+                {
+                    _isChanged = true;
+                }
+            }
+        }
+        private string _defaultImagePath = string.Empty;
+
+        public bool IsChanged { get => _isChanged; }
+        private bool _isChanged;
+
         public void LoadData()
         {
-            if (Properties.Settings.Default.IsFirstRun)
+            AppSettingsData data = AppSettingsStore.Load();
+
+            if (data.IsFirstRun)
             {
                 TitleInfo.Text = "Title: ";
                 SubTitleInfo.Text = "SubTitle: ";
@@ -132,84 +234,159 @@ namespace Lipository.App.Datas
                 ReleaseDateInfo.Text = "Release Date: ";
                 LastDateInfo.Text = "Last Date: ";
 
-                Properties.Settings.Default.TitleInfoText = TitleInfo.Text;
-                Properties.Settings.Default.SubTitleInfoText = SubTitleInfo.Text;
-                Properties.Settings.Default.RateInfoText = RateInfo.Text;
-                Properties.Settings.Default.Etc1InfoText = Etc1Info.Text;
-                Properties.Settings.Default.Etc2InfoText = Etc2Info.Text;
-                Properties.Settings.Default.Etc3InfoText = Etc3Info.Text;
-                Properties.Settings.Default.Etc4InfoText = Etc4Info.Text;
-                Properties.Settings.Default.MemoInfoText = MemoInfo.Text;
-                Properties.Settings.Default.ReleaseInfoText = ReleaseDateInfo.Text;
-                Properties.Settings.Default.LastInfoText = LastDateInfo.Text;
-                Properties.Settings.Default.IsFirstRun = false;
-                Properties.Settings.Default.Save();
+                data.TitleInfoText = TitleInfo.Text;
+                data.SubTitleInfoText = SubTitleInfo.Text;
+                data.RateInfoText = RateInfo.Text;
+                data.Etc1InfoText = Etc1Info.Text;
+                data.Etc2InfoText = Etc2Info.Text;
+                data.Etc3InfoText = Etc3Info.Text;
+                data.Etc4InfoText = Etc4Info.Text;
+                data.MemoInfoText = MemoInfo.Text;
+                data.ReleaseInfoText = ReleaseDateInfo.Text;
+                data.LastInfoText = LastDateInfo.Text;
+                data.IsFirstRun = false;
+                AppSettingsStore.Save(data);
             }
             else
             {
-                TitleInfo.Text = Properties.Settings.Default.TitleInfoText;
-                SubTitleInfo.Text = Properties.Settings.Default.SubTitleInfoText;
-                RateInfo.Text = Properties.Settings.Default.RateInfoText;
-                Etc1Info.Text = Properties.Settings.Default.Etc1InfoText;
-                Etc2Info.Text = Properties.Settings.Default.Etc2InfoText;
-                Etc3Info.Text = Properties.Settings.Default.Etc3InfoText;
-                Etc4Info.Text = Properties.Settings.Default.Etc4InfoText;
-                MemoInfo.Text = Properties.Settings.Default.MemoInfoText;
-                ReleaseDateInfo.Text = Properties.Settings.Default.ReleaseInfoText;
-                LastDateInfo.Text = Properties.Settings.Default.LastInfoText;
+                TitleInfo.Text = data.TitleInfoText;
+                SubTitleInfo.Text = data.SubTitleInfoText;
+                RateInfo.Text = data.RateInfoText;
+                Etc1Info.Text = data.Etc1InfoText;
+                Etc2Info.Text = data.Etc2InfoText;
+                Etc3Info.Text = data.Etc3InfoText;
+                Etc4Info.Text = data.Etc4InfoText;
+                MemoInfo.Text = data.MemoInfoText;
+                ReleaseDateInfo.Text = data.ReleaseInfoText;
+                LastDateInfo.Text = data.LastInfoText;
             }
 
-            TotalInfo.Width = Properties.Settings.Default.TotalInfoSize.Width;
-            TotalInfo.Height = Properties.Settings.Default.TotalInfoSize.Height;
+            TotalInfo.Width = data.TotalInfoWidth;
+            TotalInfo.Height = data.TotalInfoHeight;
 
-            ImageInfo.IsVisible = Properties.Settings.Default.ImageInfoVisible;
-            ImageInfo.Width = Properties.Settings.Default.ImageInfoSize.Width;
-            ImageInfo.Height = Properties.Settings.Default.ImageInfoSize.Height;
-            ImageInfo.XPos = Properties.Settings.Default.ImageInfoPos.X;
-            ImageInfo.YPos = Properties.Settings.Default.ImageInfoPos.Y;
+            ImageInfo.IsVisible = data.ImageInfoVisible;
+            ImageInfo.Width = data.ImageInfoWidth;
+            ImageInfo.Height = data.ImageInfoHeight;
+            ImageInfo.XPos = data.ImageInfoXPos;
+            ImageInfo.YPos = data.ImageInfoYPos;
 
-            TitleInfo.IsVisible = Properties.Settings.Default.TitleInfoVisible;
-            TitleInfo.XPos = Properties.Settings.Default.TitleInfoPos.X;
-            TitleInfo.YPos = Properties.Settings.Default.TitleInfoPos.Y;
+            TitleInfo.IsVisible = data.TitleInfoVisible;
+            TitleInfo.XPos = data.TitleInfoXPos;
+            TitleInfo.YPos = data.TitleInfoYPos;
 
-            SubTitleInfo.IsVisible = Properties.Settings.Default.SubTitleInfoVisible;
-            SubTitleInfo.XPos = Properties.Settings.Default.SubTitleInfoPos.X;
-            SubTitleInfo.YPos = Properties.Settings.Default.SubTitleInfoPos.Y;
+            SubTitleInfo.IsVisible = data.SubTitleInfoVisible;
+            SubTitleInfo.XPos = data.SubTitleInfoXPos;
+            SubTitleInfo.YPos = data.SubTitleInfoYPos;
 
-            RateInfo.IsVisible = Properties.Settings.Default.RateInfoVisible;
-            RateInfo.XPos = Properties.Settings.Default.RateInfoPos.X;
-            RateInfo.YPos = Properties.Settings.Default.RateInfoPos.Y;
+            RateInfo.IsVisible = data.RateInfoVisible;
+            RateInfo.XPos = data.RateInfoXPos;
+            RateInfo.YPos = data.RateInfoYPos;
 
-            Etc1Info.IsVisible = Properties.Settings.Default.Etc1InfoVisible;
-            Etc1Info.XPos = Properties.Settings.Default.Etc1InfoPos.X;
-            Etc1Info.YPos = Properties.Settings.Default.Etc1InfoPos.Y;
+            Etc1Info.IsVisible = data.Etc1InfoVisible;
+            Etc1Info.XPos = data.Etc1InfoXPos;
+            Etc1Info.YPos = data.Etc1InfoYPos;
 
-            Etc2Info.IsVisible = Properties.Settings.Default.Etc2InfoVisible;
-            Etc2Info.XPos = Properties.Settings.Default.Etc2InfoPos.X;
-            Etc2Info.YPos = Properties.Settings.Default.Etc2InfoPos.Y;
+            Etc2Info.IsVisible = data.Etc2InfoVisible;
+            Etc2Info.XPos = data.Etc2InfoXPos;
+            Etc2Info.YPos = data.Etc2InfoYPos;
 
-            Etc3Info.IsVisible = Properties.Settings.Default.Etc3InfoVisible;
-            Etc3Info.XPos = Properties.Settings.Default.Etc3InfoPos.X;
-            Etc3Info.YPos = Properties.Settings.Default.Etc3InfoPos.Y;
+            Etc3Info.IsVisible = data.Etc3InfoVisible;
+            Etc3Info.XPos = data.Etc3InfoXPos;
+            Etc3Info.YPos = data.Etc3InfoYPos;
 
-            Etc4Info.IsVisible = Properties.Settings.Default.Etc4InfoVisible;
-            Etc4Info.XPos = Properties.Settings.Default.Etc4InfoPos.X;
-            Etc4Info.YPos = Properties.Settings.Default.Etc4InfoPos.Y;
+            Etc4Info.IsVisible = data.Etc4InfoVisible;
+            Etc4Info.XPos = data.Etc4InfoXPos;
+            Etc4Info.YPos = data.Etc4InfoYPos;
 
-            MemoInfo.IsVisible = Properties.Settings.Default.MemoInfoVisible;
-            MemoInfo.XPos = Properties.Settings.Default.MemoInfoPos.X;
-            MemoInfo.YPos = Properties.Settings.Default.MemoInfoPos.Y;
+            MemoInfo.IsVisible = data.MemoInfoVisible;
+            MemoInfo.XPos = data.MemoInfoXPos;
+            MemoInfo.YPos = data.MemoInfoYPos;
 
-            ReleaseDateInfo.IsVisible = Properties.Settings.Default.ReleaseInfoVisible;
-            ReleaseDateInfo.XPos = Properties.Settings.Default.ReleaseInfoPos.X;
-            ReleaseDateInfo.YPos = Properties.Settings.Default.ReleaseInfoPos.Y;
+            ReleaseDateInfo.IsVisible = data.ReleaseInfoVisible;
+            ReleaseDateInfo.XPos = data.ReleaseInfoXPos;
+            ReleaseDateInfo.YPos = data.ReleaseInfoYPos;
 
-            LastDateInfo.IsVisible = Properties.Settings.Default.LastInfoVisible;
-            LastDateInfo.XPos = Properties.Settings.Default.LastInfoPos.X;
-            LastDateInfo.YPos = Properties.Settings.Default.LastInfoPos.Y;
+            LastDateInfo.IsVisible = data.LastInfoVisible;
+            LastDateInfo.XPos = data.LastInfoXPos;
+            LastDateInfo.YPos = data.LastInfoYPos;
 
-            MediaExtensions = Properties.Settings.Default.MediaExtensions;
-            ImageExtensions = Properties.Settings.Default.ImageExtensions;
+            MediaExtensions = data.MediaExtensions;
+            ImageExtensions = data.ImageExtensions;
+
+            DefaultImagePath = data.DefaultImagePath;
+        }
+
+        public void SaveData()
+        {
+            AppSettingsData data = new AppSettingsData
+            {
+                IsFirstRun = false,
+
+                TotalInfoWidth = TotalInfo.Width,
+                TotalInfoHeight = TotalInfo.Height,
+
+                ImageInfoWidth = ImageInfo.Width,
+                ImageInfoHeight = ImageInfo.Height,
+                ImageInfoXPos = ImageInfo.XPos,
+                ImageInfoYPos = ImageInfo.YPos,
+                ImageInfoVisible = ImageInfo.IsVisible,
+
+                TitleInfoXPos = TitleInfo.XPos,
+                TitleInfoYPos = TitleInfo.YPos,
+                TitleInfoVisible = TitleInfo.IsVisible,
+                TitleInfoText = TitleInfo.Text,
+
+                SubTitleInfoXPos = SubTitleInfo.XPos,
+                SubTitleInfoYPos = SubTitleInfo.YPos,
+                SubTitleInfoVisible = SubTitleInfo.IsVisible,
+                SubTitleInfoText = SubTitleInfo.Text,
+
+                RateInfoXPos = RateInfo.XPos,
+                RateInfoYPos = RateInfo.YPos,
+                RateInfoVisible = RateInfo.IsVisible,
+                RateInfoText = RateInfo.Text,
+
+                Etc1InfoXPos = Etc1Info.XPos,
+                Etc1InfoYPos = Etc1Info.YPos,
+                Etc1InfoVisible = Etc1Info.IsVisible,
+                Etc1InfoText = Etc1Info.Text,
+
+                Etc2InfoXPos = Etc2Info.XPos,
+                Etc2InfoYPos = Etc2Info.YPos,
+                Etc2InfoVisible = Etc2Info.IsVisible,
+                Etc2InfoText = Etc2Info.Text,
+
+                Etc3InfoXPos = Etc3Info.XPos,
+                Etc3InfoYPos = Etc3Info.YPos,
+                Etc3InfoVisible = Etc3Info.IsVisible,
+                Etc3InfoText = Etc3Info.Text,
+
+                Etc4InfoXPos = Etc4Info.XPos,
+                Etc4InfoYPos = Etc4Info.YPos,
+                Etc4InfoVisible = Etc4Info.IsVisible,
+                Etc4InfoText = Etc4Info.Text,
+
+                MemoInfoXPos = MemoInfo.XPos,
+                MemoInfoYPos = MemoInfo.YPos,
+                MemoInfoVisible = MemoInfo.IsVisible,
+                MemoInfoText = MemoInfo.Text,
+
+                ReleaseInfoXPos = ReleaseDateInfo.XPos,
+                ReleaseInfoYPos = ReleaseDateInfo.YPos,
+                ReleaseInfoVisible = ReleaseDateInfo.IsVisible,
+                ReleaseInfoText = ReleaseDateInfo.Text,
+
+                LastInfoXPos = LastDateInfo.XPos,
+                LastInfoYPos = LastDateInfo.YPos,
+                LastInfoVisible = LastDateInfo.IsVisible,
+                LastInfoText = LastDateInfo.Text,
+
+                MediaExtensions = MediaExtensions,
+                ImageExtensions = ImageExtensions,
+                DefaultImagePath = DefaultImagePath,
+            };
+
+            AppSettingsStore.Save(data);
         }
     }
 }

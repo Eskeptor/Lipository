@@ -35,5 +35,11 @@ namespace Lipository.App.Globals
             public static readonly string DirPath = Path.Combine(FileUtil.GetCurrentPath(FileUtil.EnvironmentTypes.WPF), Directories.Database);
             public static readonly string FullPath = Path.Combine(DirPath, FileName);
         }
+
+        public static class Settings
+        {
+            public static readonly string FileName = "settings.json";
+            public static readonly string FullPath = Path.Combine(FileUtil.GetCurrentPath(FileUtil.EnvironmentTypes.WPF), FileName);
+        }
     }
 }

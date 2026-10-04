@@ -514,5 +514,17 @@ namespace Lipository.App.Properties {
                 this["IsFirstRun"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DefaultImagePath {
+            get {
+                return ((string)(this["DefaultImagePath"]));
+            }
+            set {
+                this["DefaultImagePath"] = value;
+            }
+        }
     }
 }

@@ -40,6 +40,8 @@ namespace Lipository.App.Pages
             nameof(DatabaseItem.LastDateString)
         };
 
+        private static bool _isLoaded;
+
         public DatabasePage()
         {
             InitializeComponent();
@@ -47,6 +49,11 @@ namespace Lipository.App.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (_isLoaded)
+            {
+                return;
+            }
+            _isLoaded = true;
             ViewModel.ReloadCommand.Execute(null);
         }
 
