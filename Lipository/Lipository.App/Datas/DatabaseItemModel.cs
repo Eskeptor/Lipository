@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : DatabaseItemModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.29 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.08 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -33,6 +33,9 @@ namespace Lipository.App.Datas
             set => SetProperty(ref _items, value);
         }
         private ObservableCollection<DatabaseItem> _items = new ObservableCollection<DatabaseItem>();
+
+        public bool IsInitLoaded { get => _isInitLoaded; }
+        private bool _isInitLoaded;
 
         private int _lastID;
 
@@ -325,6 +328,8 @@ namespace Lipository.App.Datas
                     }
                 }
             }
+
+            _isInitLoaded = true;
             return true;
         }
 

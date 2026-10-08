@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : DatabasePageViewModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.29 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.08 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -32,6 +32,8 @@ namespace Lipository.App.ViewModel
             set => SetProperty(ref _selectedItem, value);
         }
         private DatabaseItem? _selectedItem;
+
+        public bool IsInitLoaded { get => DatabaseItemModel.Model.IsInitLoaded; }
 
         [RelayCommand]
         private void Reload()

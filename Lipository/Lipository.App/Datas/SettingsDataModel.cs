@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : SettingsDataModel.cs
 // Project          : Lipository.App  
-// Last Update      : 2026.10.04 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.08 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using Esk.GearForge.CSUtil;
 
 namespace Lipository.App.Datas
 {
@@ -180,6 +181,10 @@ namespace Lipository.App.Datas
             get => _mediaExtensions;
             set
             {
+                if (_mediaExtensions.EqualsOrdinal(value))
+                {
+                    return;
+                }
                 if (SetProperty(ref _mediaExtensions, value))
                 {
                     _isChanged = true;
@@ -193,6 +198,10 @@ namespace Lipository.App.Datas
             get => _imageExtensions;
             set
             {
+                if (_imageExtensions.EqualsOrdinal(value))
+                {
+                    return;
+                }
                 if (SetProperty(ref _imageExtensions, value))
                 {
                     _isChanged = true;
@@ -206,6 +215,10 @@ namespace Lipository.App.Datas
             get => _defaultImagePath;
             set
             {
+                if (_defaultImagePath.EqualsOrdinal(value))
+                {
+                    return;
+                }
                 if (SetProperty(ref _defaultImagePath, value))
                 {
                     _isChanged = true;
@@ -314,6 +327,8 @@ namespace Lipository.App.Datas
             ImageExtensions = data.ImageExtensions;
 
             DefaultImagePath = data.DefaultImagePath;
+
+            _isChanged = false;
         }
 
         public void SaveData()
@@ -385,6 +400,7 @@ namespace Lipository.App.Datas
                 ImageExtensions = ImageExtensions,
                 DefaultImagePath = DefaultImagePath,
             };
+            _isChanged = false;
 
             AppSettingsStore.Save(data);
         }

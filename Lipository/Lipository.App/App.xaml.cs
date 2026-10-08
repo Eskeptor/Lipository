@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : App.xaml.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.19 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.08 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -26,6 +26,8 @@ using Microsoft.UI.Xaml.Shapes;
 using Esk.GearForge.SQLiteUtil;
 using Esk.GearForge.SQLiteUtil.Query;
 
+using Lipository.App.Datas;
+
 namespace Lipository.App
 {
     /// <summary>
@@ -43,6 +45,7 @@ namespace Lipository.App
         public App()
         {
             InitializeComponent();
+            SettingsDataModel.Model.LoadData();
             CheckDatabase();
         }
 
@@ -106,6 +109,22 @@ namespace Lipository.App
                             XamlRoot = App.MainWindow.Content.XamlRoot
                         };
                         _ = dialog.ShowAsync();
+                        return;
+                    }
+                }
+                else
+                {
+                    bool isReloaded = DatabaseItemModel.Model.ReloadDatabase();
+                    if (!isReloaded)
+                    {
+                        ContentDialog errorDialog = new ContentDialog()
+                        {
+                            Title = "Database Error",
+                            Content = "Failed to reload the database items.",
+                            CloseButtonText = "OK",
+                            XamlRoot = App.MainWindow.Content.XamlRoot
+                        };
+                        _ = errorDialog.ShowAsync();
                         return;
                     }
                 }

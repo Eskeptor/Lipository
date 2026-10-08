@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : SettingInfoItem.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.29 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.08 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -77,7 +77,17 @@ namespace Lipository.App.Datas
         public bool IsVisible
         {
             get => _visible == Visibility.Visible;
-            set => Visible = value ? Visibility.Visible : Visibility.Collapsed;
+            set
+            {
+                if (value)
+                {
+                    Visible = Visibility.Visible;
+                }
+                else
+                {
+                    Visible = Visibility.Collapsed;
+                }
+            }
         }
     }
 }

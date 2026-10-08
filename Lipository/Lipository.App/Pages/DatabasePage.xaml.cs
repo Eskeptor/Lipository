@@ -1,7 +1,7 @@
 // ======================================================================================================
 // File Name        : DatabasePage.xaml.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.21 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.08 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -40,8 +40,6 @@ namespace Lipository.App.Pages
             nameof(DatabaseItem.LastDateString)
         };
 
-        private static bool _isLoaded;
-
         public DatabasePage()
         {
             InitializeComponent();
@@ -49,11 +47,10 @@ namespace Lipository.App.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (_isLoaded)
+            if (ViewModel.IsInitLoaded)
             {
                 return;
             }
-            _isLoaded = true;
             ViewModel.ReloadCommand.Execute(null);
         }
 
