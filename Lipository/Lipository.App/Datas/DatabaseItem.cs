@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : DatabaseItem.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.21 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.09 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -11,9 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Microsoft.UI.Xaml.Media.Imaging;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 
-using Esk.GearForge.CSUtil;
 using Lipository.App.Globals;
 
 namespace Lipository.App.Datas
@@ -44,7 +45,14 @@ namespace Lipository.App.Datas
         public string ImagePath
         {
             get => _imagePath;
-            set => SetProperty(ref _imagePath, value);
+            set
+            {
+                if (SetProperty(ref _imagePath, value))
+                {
+                    _imageSource = null;
+                    OnPropertyChanged(nameof(ImageSource));
+                }
+            }
         }
         private string _imagePath = string.Empty;
 
@@ -142,5 +150,30 @@ namespace Lipository.App.Datas
                 }
             }
         }
+
+        public BitmapImage? ImageSource
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(ImagePath))
+                {
+                    try
+                    {
+                        Uri newUri = new Uri(ImagePath);
+                        if (_imageSource == null ||
+                            newUri != _imageSource.UriSource)
+                        {
+                            _imageSource = new BitmapImage(newUri);
+                        }
+                    }
+                    catch
+                    {
+                        _imageSource = null;
+                    }
+                }
+                return _imageSource;
+            }
+        }
+        private BitmapImage? _imageSource;
     }
 }

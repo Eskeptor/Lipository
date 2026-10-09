@@ -13,10 +13,11 @@
     <!--<Window.SystemBackdrop>
         <MicaBackdrop />
     </Window.SystemBackdrop>-->
-    <NavigationView x:Name="nvMain" Header="This is My Header" PaneDisplayMode="Left"
-                    SelectionChanged="NvMain_SelectionChanged" IsSettingsVisible="True">
+    <NavigationView x:Name="nvMain" Header="This is My Header" PaneDisplayMode="Left" IsSettingsVisible="True"
+                    SelectionChanged="NvMain_SelectionChanged"
+                    Loaded="NvMain_Loaded">
         <NavigationView.MenuItems>
-            <NavigationViewItem Content="Main" Tag="MainPage" Icon="Library" />
+            <NavigationViewItem x:Name="nviMain" Content="Main" Tag="MainPage" Icon="Library" />
             <NavigationViewItem Content="Menu2" Tag="Page2" Icon="Map" />
             <NavigationViewItem Content="Menu3" Tag="Page3" Icon="Tag" />
         </NavigationView.MenuItems>

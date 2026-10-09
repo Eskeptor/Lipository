@@ -340,27 +340,46 @@ namespace Lipository.App.Datas
                 return 0;
             }
 
-            List<DatabaseItem> notMatchedDatas = new List<DatabaseItem>(_items.Count / 2);
+            List<DatabaseItem> matched = new List<DatabaseItem>(_items.Count);
+            int notMatchedCount = 0;
             foreach (DatabaseItem item in _items)
             {
                 if (item.DataPath.StartsWithOrdinal("http://") ||
                     item.DataPath.StartsWithOrdinal("https://") ||
                     System.IO.File.Exists(item.DataPath))
                 {
-                    continue;
+                    matched.Add(item);
                 }
-
-                notMatchedDatas.Add(item);
-            }
-
-            if (notMatchedDatas.Count > 0)
-            {
-                for (int i = 0; i < notMatchedDatas.Count; ++i)
+                else
                 {
-                    _ = Items.Remove(notMatchedDatas[i]);
+                    ++notMatchedCount;
                 }
             }
-            return notMatchedDatas.Count;
+
+            if (notMatchedCount > 0)
+            {
+                _items.Clear();
+                foreach (DatabaseItem item in matched)
+                {
+                    _items.Add(item);
+                }
+            }
+            return notMatchedCount;
+        }
+
+        public bool ReindexingFileID()
+        {
+            if (_items.Count == 0)
+            {
+                return false;
+            }
+            int newID = 1;
+            foreach (DatabaseItem item in _items)
+            {
+                item.ID = newID++;
+            }
+            _lastID = newID - 1;
+            return true;
         }
 
         private int GetNextID()

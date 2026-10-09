@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : DatabasePageViewModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.10.08 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.09 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -43,7 +43,7 @@ namespace Lipository.App.ViewModel
         }
 
         [RelayCommand]
-        private void Save()
+        private async Task Save()
         {
             ContentDialog dlg = new ContentDialog()
             {
@@ -53,7 +53,7 @@ namespace Lipository.App.ViewModel
                 CloseButtonText = "No",
                 XamlRoot = App.MainWindow.Content.XamlRoot
             };
-            ContentDialogResult result = dlg.ShowAsync().GetResults();
+            ContentDialogResult result = await dlg.ShowAsync();
             if (result != ContentDialogResult.Primary)
             {
                 return;
@@ -70,6 +70,7 @@ namespace Lipository.App.ViewModel
                     XamlRoot = App.MainWindow.Content.XamlRoot
                 };
                 _ = dlg.ShowAsync();
+                OnPropertyChanged(nameof(Items));
             }
         }
 
@@ -112,7 +113,7 @@ namespace Lipository.App.ViewModel
         }
 
         [RelayCommand(CanExecute = nameof(CanMatchDatabase))]
-        private void MatchDatabase()
+        private async Task MatchDatabase()
         {
             ContentDialog dlg = new ContentDialog()
             {
@@ -122,12 +123,13 @@ namespace Lipository.App.ViewModel
                 CloseButtonText = "No",
                 XamlRoot = App.MainWindow.Content.XamlRoot
             };
-            ContentDialogResult result = dlg.ShowAsync().GetResults();
+            ContentDialogResult result = await dlg.ShowAsync();
             if (result != ContentDialogResult.Primary)
             {
                 return;
             }
 
+            SelectedItem = null;
             int notMatchedCount = DatabaseItemModel.Model.MatchDatabase();
             if (notMatchedCount > 0)
             {
@@ -146,6 +148,48 @@ namespace Lipository.App.ViewModel
         }
 
         private bool CanMatchDatabase()
+        {
+            if (DatabaseItemModel.Model.Items.Count == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        [RelayCommand(CanExecute = nameof(CanReindexingFileID))]
+        private async Task ReindexingFileID()
+        {
+            ContentDialog dlg = new ContentDialog()
+            {
+                Title = "Reindexing File ID",
+                Content = "Are you sure you want to reindex the file IDs?",
+                PrimaryButtonText = "Yes",
+                CloseButtonText = "No",
+                XamlRoot = App.MainWindow.Content.XamlRoot
+            };
+            ContentDialogResult result = await dlg.ShowAsync();
+            if (result != ContentDialogResult.Primary)
+            {
+                return;
+            }
+
+            SelectedItem = null;
+            bool isIndexed = DatabaseItemModel.Model.ReindexingFileID();
+            if (isIndexed)
+            {
+                dlg = new ContentDialog()
+                {
+                    Title = "File IDs Reindexed",
+                    Content = "The file IDs have been reindexed successfully.",
+                    CloseButtonText = "OK",
+                    XamlRoot = App.MainWindow.Content.XamlRoot
+                };
+                _ = dlg.ShowAsync();
+                OnPropertyChanged(nameof(Items));
+            }
+        }
+
+        private bool CanReindexingFileID()
         {
             if (DatabaseItemModel.Model.Items.Count == 0)
             {

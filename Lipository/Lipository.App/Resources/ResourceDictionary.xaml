@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary
+    x:Class="Lipository.App.Resources.DataTemplates"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Lipository.App.Resources"
+    xmlns:datas="using:Lipository.App.Datas">
+
+    <DataTemplate x:Key="DataItemTemplate" x:DataType="datas:DatabaseItem">
+        <ItemContainer>
+            <Border BorderThickness="1" BorderBrush="Gray" Margin="4,4,4,4">
+                <Canvas Tag="{x:Bind}"
+                    Width="{x:Bind datas:SettingsDataModel.Model.TotalInfo.Width, Mode=OneWay}"
+                    Height="{x:Bind datas:SettingsDataModel.Model.TotalInfo.Height, Mode=OneWay}"
+                    Margin="1,1,1,1"
+                    DoubleTapped="Canvas_DoubleTapped">
+                    <Image Canvas.Left="{x:Bind datas:SettingsDataModel.Model.ImageInfo.XPos, Mode=OneWay}"
+                       Canvas.Top="{x:Bind datas:SettingsDataModel.Model.ImageInfo.YPos, Mode=OneWay}"
+                       Width="{x:Bind datas:SettingsDataModel.Model.ImageInfo.Width, Mode=OneWay}"
+                       Height="{x:Bind datas:SettingsDataModel.Model.ImageInfo.Height, Mode=OneWay}"
+                       Source="{x:Bind ImageSource, Mode=OneWay}"
+                       Visibility="{x:Bind datas:SettingsDataModel.Model.ImageInfo.Visible, Mode=OneWay}"
+                       Stretch="Fill" />
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.TitleInfo.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.TitleInfo.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.TitleInfo.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.TitleInfo.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.TitleInfo.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind Title, Mode=OneWay}" 
+                               Margin="4,0,0,0"
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.TitleInfo.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.SubTitleInfo.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.SubTitleInfo.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.SubTitleInfo.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.SubTitleInfo.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.SubTitleInfo.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind SubTitle, Mode=OneWay}" 
+                               Margin="4,0,0,0"
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.SubTitleInfo.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.RateInfo.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.RateInfo.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.RateInfo.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.RateInfo.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.RateInfo.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind Rate, Mode=OneWay}" 
+                               Margin="4,0,0,0"
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.RateInfo.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.Etc1Info.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.Etc1Info.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.Etc1Info.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.Etc1Info.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.Etc1Info.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind Etc1, Mode=OneWay}" 
+                               Margin="4,0,0,0"
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.Etc1Info.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.Etc2Info.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.Etc2Info.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.Etc2Info.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.Etc2Info.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.Etc2Info.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind Etc2, Mode=OneWay}" 
+                               Margin="4,0,0,0"
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.Etc2Info.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.Etc3Info.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.Etc3Info.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.Etc3Info.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.Etc3Info.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.Etc3Info.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind Etc3, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.Etc3Info.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.Etc4Info.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.Etc4Info.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.Etc4Info.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.Etc4Info.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.Etc4Info.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind Etc4, Mode=OneWay}" 
+                               Margin="4,0,0,0"
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.Etc4Info.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.MemoInfo.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.MemoInfo.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.MemoInfo.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.MemoInfo.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.MemoInfo.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind Memo, Mode=OneWay}" 
+                               Margin="4,0,0,0"
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.MemoInfo.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.ReleaseDateInfo.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.ReleaseDateInfo.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.ReleaseDateInfo.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.ReleaseDateInfo.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.ReleaseDateInfo.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind ReleaseDate, Mode=OneWay}" 
+                               Margin="4,0,0,0"
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.ReleaseDateInfo.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Left="{x:Bind datas:SettingsDataModel.Model.LastDateInfo.XPos, Mode=OneWay}"
+                            Canvas.Top="{x:Bind datas:SettingsDataModel.Model.LastDateInfo.YPos, Mode=OneWay}"
+                            Visibility="{x:Bind datas:SettingsDataModel.Model.LastDateInfo.Visible, Mode=OneWay}" >
+                        <TextBlock Text="{x:Bind datas:SettingsDataModel.Model.LastDateInfo.Text, Mode=OneWay}" 
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.LastDateInfo.FontSize, Mode=OneWay}" />
+                        <TextBlock Text="{x:Bind LastDate, Mode=OneWay}" 
+                               Margin="4,0,0,0"
+                               FontSize="{x:Bind datas:SettingsDataModel.Model.LastDateInfo.FontSize, Mode=OneWay}" />
+                    </StackPanel>
+                </Canvas>
+            </Border>
+        </ItemContainer>
+    </DataTemplate>
+
+</ResourceDictionary>

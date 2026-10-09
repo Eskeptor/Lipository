@@ -1,7 +1,7 @@
 // ======================================================================================================
 // File Name        : MainPage.xaml.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.16 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.09 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -38,24 +38,22 @@ namespace Lipository.App.Pages
         public MainPage()
         {
             InitializeComponent();
-
         }
 
-        private void Canvas_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            if (e.OriginalSource is not FrameworkElement element)
+            ViewModel.BuildTree();
+            tvMain.SelectedItem = ViewModel.SelectedNode;
+        }
+
+        private void TvMain_ItemInvoked(object sender, TreeViewItemInvokedEventArgs e)
+        {
+            if (e.InvokedItem is not MainTreeNodeItem node)
             {
                 return;
             }
-            if (element.DataContext is not DatabaseItem item)
-            {
-                return;
-            }
-            ViewModel.SelectedItem = item;
-            if (ViewModel.RunItemCommand.CanExecute(null))
-            {
-                ViewModel.RunItemCommand.Execute(null);
-            }
+
+            ViewModel.SelectedNode = node;
         }
     }
 }

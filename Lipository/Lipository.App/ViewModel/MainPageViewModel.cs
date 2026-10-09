@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : MainPageViewModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.10.03 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.09 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -17,10 +17,13 @@ using Microsoft.UI.Xaml.Controls;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
-using Lipository.App.Datas;
+using CommunityToolkit.Mvvm.Messaging;
 
 using Esk.GearForge.CSUtil;
+
+using Lipository.App.Datas;
+using Lipository.App.Globals;
+
 
 namespace Lipository.App.ViewModel
 {
@@ -28,12 +31,85 @@ namespace Lipository.App.ViewModel
     {
         public ObservableCollection<DatabaseItem> Items { get => DatabaseItemModel.Model.Items; }
 
+        public ObservableCollection<MainTreeNodeItem> TreeNodes { get; } = new ObservableCollection<MainTreeNodeItem>();
+
         public DatabaseItem? SelectedItem
         {
             get => _selectedItem;
             set => SetProperty(ref _selectedItem, value);
         }
         private DatabaseItem? _selectedItem;
+
+        public MainTreeNodeItem? SelectedNode
+        {
+            get => _selectedNode;
+            set => SetProperty(ref _selectedNode, value);
+        }
+        private MainTreeNodeItem? _selectedNode;
+
+        public MainPageViewModel()
+        {
+            WeakReferenceMessenger.Default.Register<RunItemMessage>(this, OnRunItemMessageReceived);
+        }
+
+        public void BuildTree()
+        {
+            TreeNodes.Clear();
+
+            MainTreeNodeItem rootAll = new MainTreeNodeItem()
+            {
+                Name = "All",
+                IsExpanded = false,
+            };
+            MainTreeNodeItem rootEtc = new MainTreeNodeItem()
+            {
+                Name = "ETC",
+                IsExpanded = false,
+            };
+            MainTreeNodeItem rootEtc1 = new MainTreeNodeItem()
+            {
+                Name = SettingsDataModel.Model.Etc1Info.Text,
+                IsExpanded = false,
+            };
+            rootEtc.Children.Add(rootEtc1);
+            MainTreeNodeItem rootEtc2 = new MainTreeNodeItem()
+            {
+                Name = SettingsDataModel.Model.Etc2Info.Text,
+                IsExpanded = false,
+            };
+            rootEtc.Children.Add(rootEtc2);
+            MainTreeNodeItem rootEtc3 = new MainTreeNodeItem()
+            {
+                Name = SettingsDataModel.Model.Etc3Info.Text,
+                IsExpanded = false,
+            };
+            rootEtc.Children.Add(rootEtc3);
+            MainTreeNodeItem rootEtc4 = new MainTreeNodeItem()
+            {
+                Name = SettingsDataModel.Model.Etc4Info.Text,
+                IsExpanded = false,
+            };
+            rootEtc.Children.Add(rootEtc4);
+            TreeNodes.Add(rootAll);
+            TreeNodes.Add(rootEtc);
+
+            _selectedNode = rootAll;
+        }
+
+        private void OnRunItemMessageReceived(object sender, RunItemMessage message)
+        {
+            if (sender is not MainPageViewModel viewModel)
+            {
+                return;
+            }
+            viewModel.SelectedItem = message.Value;
+            if (viewModel.RunItemCommand.CanExecute(null))
+            {
+                viewModel.RunItemCommand.Execute(null);
+            }
+        }
+
+        
 
         [RelayCommand(CanExecute = nameof(CanRunItem))]
         private void RunItem()
@@ -49,10 +125,8 @@ namespace Lipository.App.ViewModel
                 };
                 try
                 {
-                    if (Process.Start(startInfo) != null)
-                    {
-                        isRun = true;
-                    }
+                    _ = Process.Start(startInfo);
+                    isRun = true;
                 }
                 catch (Exception ex)
                 {
@@ -60,7 +134,8 @@ namespace Lipository.App.ViewModel
                     {
                         Title = "Error",
                         Content = $"Failed to run the item: {ex.Message}",
-                        CloseButtonText = "OK"
+                        CloseButtonText = "OK",
+                        XamlRoot = App.MainWindow.Content.XamlRoot
                     };
                     _ = dlg.ShowAsync();
                     return;
@@ -76,10 +151,8 @@ namespace Lipository.App.ViewModel
                         UseShellExecute = true,
                         Arguments = $"{item.DataPath} --incognito"
                     };
-                    if (Process.Start(startInfo) != null)
-                    {
-                        isRun = true;
-                    }
+                    _ = Process.Start(startInfo);
+                    isRun = true;
                 }
                 catch
                 {
@@ -104,7 +177,8 @@ namespace Lipository.App.ViewModel
                 {
                     Title = "Error",
                     Content = $"Failed to run the item: {item.DataPath}",
-                    CloseButtonText = "OK"
+                    CloseButtonText = "OK",
+                    XamlRoot = App.MainWindow.Content.XamlRoot
                 };
                 _ = dlg.ShowAsync();
             }

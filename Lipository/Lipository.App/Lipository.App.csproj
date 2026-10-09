@@ -17,6 +17,7 @@
     <None Remove="Pages\DatabasePage.xaml" />
     <None Remove="Pages\MainPage.xaml" />
     <None Remove="Pages\SettingPage.xaml" />
+    <None Remove="Resources\ResourceDictionary.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,6 +66,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Page Update="Resources\ResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\DatabasePage.xaml">

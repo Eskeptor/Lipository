@@ -26,6 +26,8 @@
 
             <StackPanel Orientation="Horizontal" Grid.Column="0">
                 <Button x:Name="btnReload" Content="Reload" Margin="5" Command="{x:Bind ViewModel.ReloadCommand}" />
+                <Button x:Name="btnMatch" Content="Data Match" Margin="5" Command="{x:Bind ViewModel.MatchDatabaseCommand}" />
+                <Button x:Name="btnReindex" Content="Reindex ID" Margin="5" Command="{x:Bind ViewModel.ReindexingFileIDCommand}" />
                 <Button x:Name="btnSave" Content="Save" Margin="5,5,20,5" Command="{x:Bind ViewModel.SaveCommand}" />
                 <Button x:Name="btnAdd" Content="Add" Margin="5" Command="{x:Bind ViewModel.AddCommand}" />
                 <Button x:Name="btnDelete" Content="Delete" Margin="5" Command="{x:Bind ViewModel.DeleteCommand}" />

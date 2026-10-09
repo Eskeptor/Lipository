@@ -1,7 +1,7 @@
 // ======================================================================================================
 // File Name        : MainWindow.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.16 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.09 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -35,6 +35,11 @@ namespace Lipository.App
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void NvMain_Loaded(object sender, RoutedEventArgs e)
+        {
+            nvMain.SelectedItem = nviMain;
         }
 
         private void NvMain_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

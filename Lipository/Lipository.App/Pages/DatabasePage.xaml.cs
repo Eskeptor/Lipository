@@ -1,7 +1,7 @@
 // ======================================================================================================
 // File Name        : DatabasePage.xaml.cs
 // Project          : Lipository.App
-// Last Update      : 2026.10.08 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.09 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -37,7 +37,8 @@ namespace Lipository.App.Pages
         private static readonly HashSet<string> HiddenColumns = new HashSet<string>()
         {
             nameof(DatabaseItem.ReleaseDateString),
-            nameof(DatabaseItem.LastDateString)
+            nameof(DatabaseItem.LastDateString),
+            nameof(DatabaseItem.ImageSource),
         };
 
         public DatabasePage()

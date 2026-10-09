@@ -6,8 +6,17 @@
     xmlns:local="using:Lipository.App.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:res="using:Lipository.App.Resources"
     Loaded="Page_Loaded"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <res:DataTemplates />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <Grid Height="650">
         <Grid.ColumnDefinitions>
@@ -15,7 +24,7 @@
             <ColumnDefinition Width="280"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Margin="0,0,5,5">
+        <Grid Grid.Column="0" Margin="5,0,5,0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="160"/>
@@ -81,123 +90,124 @@
                 <TextBlock Grid.Row="0" Grid.Column="6" Text="Height" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
 
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Main Item" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
-                <NumberBox Grid.Row="1" Grid.Column="5" Value="{x:Bind ViewModel.SettingsData.TotalInfo.Width, Mode=OneWay}"
+                <NumberBox Grid.Row="1" Grid.Column="5" Value="{x:Bind ViewModel.SettingsData.TotalInfo.Width, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="1" Grid.Column="6" Value="{x:Bind ViewModel.SettingsData.TotalInfo.Height, Mode=OneWay}"
+                <NumberBox Grid.Row="1" Grid.Column="6" Value="{x:Bind ViewModel.SettingsData.TotalInfo.Height, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="Image" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.ImageInfo.IsVisible, Mode=OneWay}" />
-                <NumberBox Grid.Row="2" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.ImageInfo.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.ImageInfo.IsVisible, Mode=TwoWay}" />
+                <NumberBox Grid.Row="2" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.ImageInfo.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="2" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.ImageInfo.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="2" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.ImageInfo.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="2" Grid.Column="5" Value="{x:Bind ViewModel.SettingsData.ImageInfo.Width, Mode=OneWay}"
+                <NumberBox Grid.Row="2" Grid.Column="5" Value="{x:Bind ViewModel.SettingsData.ImageInfo.Width, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="2" Grid.Column="6" Value="{x:Bind ViewModel.SettingsData.ImageInfo.Height, Mode=OneWay}"
+                <NumberBox Grid.Row="2" Grid.Column="6" Value="{x:Bind ViewModel.SettingsData.ImageInfo.Height, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="3" Grid.Column="0" Text="Title" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.TitleInfo.IsVisible, Mode=OneWay}" />
-                <TextBox Grid.Row="3" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.TitleInfo.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="3" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.TitleInfo.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.TitleInfo.IsVisible, Mode=TwoWay}" />
+                <TextBox Grid.Row="3" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.TitleInfo.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="3" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.TitleInfo.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="3" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.TitleInfo.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="3" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.TitleInfo.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="4" Grid.Column="0" Text="Subtitle" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.SubTitleInfo.IsVisible, Mode=OneWay}" />
-                <TextBox Grid.Row="4" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.SubTitleInfo.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="4" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.SubTitleInfo.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.SubTitleInfo.IsVisible, Mode=TwoWay}" />
+                <TextBox Grid.Row="4" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.SubTitleInfo.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="4" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.SubTitleInfo.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="4" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.SubTitleInfo.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="4" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.SubTitleInfo.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="5" Grid.Column="0" Text="Rate" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
                           IsChecked="{x:Bind ViewModel.SettingsData.RateInfo.IsVisible, Mode=TwoWay}" />
-                <TextBox Grid.Row="5" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.RateInfo.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="5" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.RateInfo.XPos, Mode=OneWay}"
+                <TextBox Grid.Row="5" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.RateInfo.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="5" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.RateInfo.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="5" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.RateInfo.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="5" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.RateInfo.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="6" Grid.Column="0" Text="ETC1" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.Etc1Info.IsVisible, Mode=OneWay}" />
-                <TextBox Grid.Row="6" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.Etc1Info.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="6" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.Etc1Info.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.Etc1Info.IsVisible, Mode=TwoWay}" />
+                <TextBox Grid.Row="6" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.Etc1Info.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="6" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.Etc1Info.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="6" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.Etc1Info.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="6" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.Etc1Info.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="7" Grid.Column="0" Text="ETC2" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.Etc2Info.IsVisible, Mode=OneWay}" />
-                <TextBox Grid.Row="7" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.Etc2Info.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="7" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.Etc2Info.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.Etc2Info.IsVisible, Mode=TwoWay}" />
+                <TextBox Grid.Row="7" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.Etc2Info.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="7" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.Etc2Info.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="7" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.Etc2Info.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="7" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.Etc2Info.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="8" Grid.Column="0" Text="ETC3" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.Etc3Info.IsVisible, Mode=OneWay}" />
-                <TextBox Grid.Row="8" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.Etc3Info.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="8" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.Etc3Info.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.Etc3Info.IsVisible, Mode=TwoWay}" />
+                <TextBox Grid.Row="8" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.Etc3Info.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="8" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.Etc3Info.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="8" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.Etc3Info.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="8" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.Etc3Info.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="9" Grid.Column="0" Text="ETC4" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.Etc4Info.IsVisible, Mode=OneWay}" />
-                <TextBox Grid.Row="9" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.Etc4Info.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="9" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.Etc4Info.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.Etc4Info.IsVisible, Mode=TwoWay}" />
+                <TextBox Grid.Row="9" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.Etc4Info.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="9" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.Etc4Info.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="9" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.Etc4Info.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="9" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.Etc4Info.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="10" Grid.Column="0" Text="Memo" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.MemoInfo.IsVisible, Mode=OneWay}" />
-                <TextBox Grid.Row="10" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.MemoInfo.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="10" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.MemoInfo.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.MemoInfo.IsVisible, Mode=TwoWay}" />
+                <TextBox Grid.Row="10" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.MemoInfo.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="10" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.MemoInfo.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="10" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.MemoInfo.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="10" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.MemoInfo.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="11" Grid.Column="0" Text="Release" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="11" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.ReleaseDateInfo.IsVisible, Mode=OneWay}" />
-                <TextBox Grid.Row="11" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.ReleaseDateInfo.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="11" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.ReleaseDateInfo.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.ReleaseDateInfo.IsVisible, Mode=TwoWay}" />
+                <TextBox Grid.Row="11" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.ReleaseDateInfo.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="11" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.ReleaseDateInfo.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="11" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.ReleaseDateInfo.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="11" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.ReleaseDateInfo.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
                 <TextBlock Grid.Row="12" Grid.Column="0" Text="Lastest" HorizontalTextAlignment="Center" VerticalAlignment="Center" />
                 <CheckBox Grid.Row="12" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="0" Padding="0"
-                          IsChecked="{x:Bind ViewModel.SettingsData.LastDateInfo.IsVisible, Mode=OneWay}" />
-                <TextBox Grid.Row="12" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.LastDateInfo.Text, Mode=OneWay}" />
-                <NumberBox Grid.Row="12" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.LastDateInfo.XPos, Mode=OneWay}"
+                          IsChecked="{x:Bind ViewModel.SettingsData.LastDateInfo.IsVisible, Mode=TwoWay}" />
+                <TextBox Grid.Row="12" Grid.Column="2" Text="{x:Bind ViewModel.SettingsData.LastDateInfo.Text, Mode=TwoWay}" />
+                <NumberBox Grid.Row="12" Grid.Column="3" Value="{x:Bind ViewModel.SettingsData.LastDateInfo.XPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
-                <NumberBox Grid.Row="12" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.LastDateInfo.YPos, Mode=OneWay}"
+                <NumberBox Grid.Row="12" Grid.Column="4" Value="{x:Bind ViewModel.SettingsData.LastDateInfo.YPos, Mode=TwoWay}"
                            SpinButtonPlacementMode="Compact" SmallChange="1" LargeChange="10" />
 
             </Grid>
 
-            <StackPanel Grid.Row="1" Margin="5,0,0,0">
+            <StackPanel Grid.Row="1" Margin="5,5,0,0">
+                <!--
                 <Grid Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="190"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Video Extensions" VerticalAlignment="Center" />
-                    <TextBox Grid.Column="1" Text="{x:Bind ViewModel.SettingsData.MediaExtensions, Mode=OneWay}" />
+                    <TextBox Grid.Column="1" Text="{x:Bind ViewModel.SettingsData.MediaExtensions, Mode=TwoWay}" />
                 </Grid>
                 <Grid Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
@@ -205,15 +215,16 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Image Extensions" VerticalAlignment="Center" />
-                    <TextBox Grid.Column="1" Text="{x:Bind ViewModel.SettingsData.ImageExtensions, Mode=OneWay}" />
+                    <TextBox Grid.Column="1" Text="{x:Bind ViewModel.SettingsData.ImageExtensions, Mode=TwoWay}" />
                 </Grid>
+                -->
                 <Grid Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="190"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Default Image Path" VerticalAlignment="Center" />
-                    <TextBox Grid.Column="1" Text="{x:Bind ViewModel.SettingsData.DefaultImagePath, Mode=OneWay}" />
+                    <TextBox Grid.Column="1" Text="{x:Bind ViewModel.SettingsData.DefaultImagePath, Mode=TwoWay}" />
                 </Grid>
             </StackPanel>
             <Button Grid.Row="2" Content="Save" HorizontalAlignment="Right" Command="{x:Bind ViewModel.SaveCommand}" />
@@ -221,11 +232,19 @@
 
         <Grid Grid.Column="1" Margin="5,0,5,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="32"/>
+                <RowDefinition Height="34"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Preview" FontSize="16" />
+            <Border Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1,1,1,1" >
+                <TextBlock Margin="0,0,5,0" Padding="10,0,0,0" Text="Preview" FontSize="16" VerticalAlignment="Center" />
+            </Border>
+
+            <StackPanel Grid.Row="1">
+                <ContentControl Content="{x:Bind ViewModel.PreviewItem, Mode=OneWay}"
+                                ContentTemplate="{StaticResource DataItemTemplate}"
+                                HorizontalAlignment="Left" VerticalAlignment="Top" />
+            </StackPanel>
         </Grid>
     </Grid>
     
