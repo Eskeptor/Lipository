@@ -1,7 +1,7 @@
 // ======================================================================================================
 // File Name        : DatabasePage.xaml.cs
 // Project          : Lipository.App
-// Last Update      : 2026.10.09 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.19 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -61,6 +61,15 @@ namespace Lipository.App.Pages
             {
                 e.Cancel = true;
             }
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is not DataGrid dataGrid)
+            {
+                return;
+            }
+            ViewModel.SelectedItem = dataGrid.SelectedItem as DatabaseItem;
         }
     }
 }

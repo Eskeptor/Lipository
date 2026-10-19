@@ -34,14 +34,14 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                <Button x:Name="btnImport" Content="Import" Margin="5" Command="{x:Bind ViewModel.ImportCommand}" />
-                <Button x:Name="btnExport" Content="Export" Margin="5" Command="{x:Bind ViewModel.ExportCommand}" />
+                <Button x:Name="btnImportFolder" Content="Import Folder" Margin="5" Command="{x:Bind ViewModel.ImportFolderCommand}" />
+                <Button x:Name="btnImportCsv" Content="Import CSV" Margin="5" Command="{x:Bind ViewModel.ImportCsvCommand}" />
+                <Button x:Name="btnExportCsv" Content="Export CSV" Margin="5" Command="{x:Bind ViewModel.ExportCsvCommand}" />
             </StackPanel>
         </Grid>
         <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0"
                            ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
-                           SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}"
-                           SelectionMode="Single"
-                           AutoGeneratingColumn="DataGrid_AutoGeneratingColumn"/>
+                           AutoGeneratingColumn="DataGrid_AutoGeneratingColumn"
+                           SelectionChanged="DataGrid_SelectionChanged"/>
     </Grid>
 </Page>

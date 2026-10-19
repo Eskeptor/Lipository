@@ -1,8 +1,10 @@
 // ======================================================================================================
 // File Name        : AppSettingsData.cs
 // Project          : Lipository.App
-// Last Update      : 2026.10.04 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.19 - yc.jeon (Eskeptor)
 // ======================================================================================================
+
+using Lipository.App.Globals;
 
 namespace Lipository.App.Datas
 {
@@ -73,8 +75,8 @@ namespace Lipository.App.Datas
         public int LastInfoYPos { get; set; } = 305;
         public bool LastInfoVisible { get; set; } = true;
 
-        public string MediaExtensions { get; set; } = "avi,mp4,wmv,mpg,mkv,mov,ts,tp,flv";
-        public string ImageExtensions { get; set; } = "jpg,jpeg,png,bmp";
+        public string MediaExtensions { get; set; } = Constants.Settings.MediaExtensions;
+        public string ImageExtensions { get; set; } = Constants.Settings.ImageExtensions;
         public string DefaultImagePath { get; set; } = string.Empty;
     }
 }

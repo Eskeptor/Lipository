@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : DatabaseItemModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.10.08 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.19 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -58,7 +58,7 @@ namespace Lipository.App.Datas
                     return false;
                 }
             }
-            Items.Add(item);
+            _items.Add(item);
             return true;
         }
 
@@ -68,7 +68,7 @@ namespace Lipository.App.Datas
             {
                 return false;
             }
-            return Items.Remove(item);
+            return _items.Remove(item);
         }
 
         public bool SaveDatabase()
@@ -358,11 +358,7 @@ namespace Lipository.App.Datas
 
             if (notMatchedCount > 0)
             {
-                _items.Clear();
-                foreach (DatabaseItem item in matched)
-                {
-                    _items.Add(item);
-                }
+                Items = new ObservableCollection<DatabaseItem>(matched);
             }
             return notMatchedCount;
         }

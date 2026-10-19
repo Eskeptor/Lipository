@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : Constants.cs
 // Project          : Lipository.App
-// Last Update      : 2026.09.19 - yc.jeon (Eskeptor)
+// Last Update      : 2026.10.19 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -40,6 +40,8 @@ namespace Lipository.App.Globals
         {
             public static readonly string FileName = "settings.json";
             public static readonly string FullPath = Path.Combine(FileUtil.GetCurrentPath(FileUtil.EnvironmentTypes.WPF), FileName);
+            public static readonly string MediaExtensions = "avi,mp4,wmv,mpg,mkv,mov,ts,tp,flv";
+            public static readonly string ImageExtensions = "jpg,jpeg,png,bmp";
         }
     }
 }
