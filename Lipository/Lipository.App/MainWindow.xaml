@@ -8,7 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:globals="using:Lipository.App.Globals"
     mc:Ignorable="d"
-    Title="Lipository.App">
+    Title="Lipository.App"
+    Closed="Window_Closed">
 
     <!--<Window.SystemBackdrop>
         <MicaBackdrop />

@@ -1,7 +1,7 @@
 // ======================================================================================================
 // File Name        : MainWindow.cs
 // Project          : Lipository.App
-// Last Update      : 2026.10.09 - yc.jeon (Eskeptor)
+// Last Update      : 2026.11.16 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -21,6 +21,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
 using Lipository.App.Globals;
+using Lipository.App.Datas;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -58,6 +59,14 @@ namespace Lipository.App
                     sender.Header = mapData.Item2;
                     mainFrame.Navigate(mapData.Item1);
                 }
+            }
+        }
+
+        private void Window_Closed(object sender, WindowEventArgs args)
+        {
+            if (DatabaseItemModel.Model.IsNeedSave)
+            {
+                DatabaseItemModel.Model.SaveDatabase();
             }
         }
     }

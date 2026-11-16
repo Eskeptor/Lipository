@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : DatabaseItemModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.10.19 - yc.jeon (Eskeptor)
+// Last Update      : 2026.11.16 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -36,6 +36,9 @@ namespace Lipository.App.Datas
 
         public bool IsInitLoaded { get => _isInitLoaded; }
         private bool _isInitLoaded;
+
+        public bool IsNeedSave { get => _isNeedSave; }
+        private bool _isNeedSave;
 
         private int _lastID;
 
@@ -375,6 +378,17 @@ namespace Lipository.App.Datas
                 item.ID = newID++;
             }
             _lastID = newID - 1;
+            return true;
+        }
+
+        public bool SetLastDate(DatabaseItem item, DateTime lastDate)
+        {
+            if (item == null)
+            {
+                return false;
+            }
+            item.LastDate = lastDate;
+            _isNeedSave = true;
             return true;
         }
 

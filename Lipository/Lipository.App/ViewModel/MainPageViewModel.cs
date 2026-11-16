@@ -1,7 +1,7 @@
 ﻿// ======================================================================================================
 // File Name        : MainPageViewModel.cs
 // Project          : Lipository.App
-// Last Update      : 2026.10.09 - yc.jeon (Eskeptor)
+// Last Update      : 2026.11.16 - yc.jeon (Eskeptor)
 // ======================================================================================================
 
 using System;
@@ -23,7 +23,6 @@ using Esk.GearForge.CSUtil;
 
 using Lipository.App.Datas;
 using Lipository.App.Globals;
-
 
 namespace Lipository.App.ViewModel
 {
@@ -109,8 +108,6 @@ namespace Lipository.App.ViewModel
             }
         }
 
-        
-
         [RelayCommand(CanExecute = nameof(CanRunItem))]
         private void RunItem()
         {
@@ -169,7 +166,7 @@ namespace Lipository.App.ViewModel
 
             if (isRun)
             {
-
+                DatabaseItemModel.Model.SetLastDate(item, DateTime.Now);
             }
             else
             {
